@@ -1,0 +1,65 @@
+header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid purple;
+}
+nav ul{
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+figure{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+#schedule {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    align-items: start;
+    
+}
+
+.span-all {
+    grid-column: 1 / -1;
+    
+}   
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1rem;
+    
+}
+
+form button {
+    justify-self: start;
+   
+}
+
+input:not([type="radio"]),
+textarea {
+    width: 100%;
+    
+}
+
+@media (max-width: 40rem) {
+
+    #schedule,
+    form {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+tr.selected th,
+tr.selected td {
+    background: lightblue;
+}
