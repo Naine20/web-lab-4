@@ -1,3 +1,8 @@
+
+:root {
+    --color-error: light-dark(oklch(45% 0.2 25), oklch(75% 0.15 25));
+}
+
 header{
     display: flex;
     flex-wrap: wrap;
@@ -44,11 +49,13 @@ form button {
    
 }
 
+
 input:not([type="radio"]),
 textarea {
     width: 100%;
-    
+    box-sizing: border-box;
 }
+
 
 @media (max-width: 40rem) {
 
@@ -62,4 +69,14 @@ textarea {
 tr.selected th,
 tr.selected td {
     background: lightblue;
+}
+
+
+.error {
+    display: block;
+    color: var(--color-error);
+}
+
+input[aria-invalid="true"] {
+    border: 2px solid var(--color-error);
 }

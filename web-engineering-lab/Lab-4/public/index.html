@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,118 +6,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Web Engineering lab 4</title>
+    <title>Web Engineering Lab 05</title>
 </head>
 
 <body>
-    
+
     <header>
-        
-        <h1>Hello World!<h1>
+        <h1>Hello World!</h1>
 
-    <nav>
-        <ul>
-            <li><a href="#">office hours</a></li>
-            <li><a href="#">Send Feedback</a></li>
-        </ul>
-    </nav>
-    
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#schedule">Office Hours</a></li>
+                <li><a href="#feedback">Send Feedback</a></li>
+            </ul>
+        </nav>
     </header>
-    
-    <section id="schedule">
-        <h2 class="span-all">Office hours</h2>
-       <table border="1">
 
-    <thead>
-        <tr>
-            <th>Day</th>
-            <th>Time</th>
-            <th>Location</th>
-            <th>Book</th>
-        </tr>
-    </thead>
+    <main>
 
-    <tbody>
+        <section id="schedule">
+            <h2 class="span-all">Office Hours</h2>
 
-        <tr>
-            <td>Monday</td>
-            <td>10:00 - 11:00</td>
-            <td>Room 214</td>
-            <td>
-                <button type="button"
-                        data-day="Monday"
-                        aria-label="Select Monday">
-                    Select
-                </button>
-            </td>
-        </tr>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th scope="col">Day</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Book</th>
+                    </tr>
+                </thead>
 
-        <tr>
-            <td>Wednesday</td>
-            <td>14:00 - 15:00</td>
-            <td>Room 214</td>
-            <td>
-                <button type="button"
-                        data-day="Wednesday"
-                        aria-label="Select Wednesday">
-                    Select
-                </button>
-            </td>
-        </tr>
+                <tbody>
+                    <tr>
+                        <td>Monday</td>
+                        <td>10:00 - 11:00</td>
+                        <td>Room 214</td>
+                        <td>
+                            <button
+                                type="button"
+                                data-day="Monday"
+                                aria-label="Select Monday">
+                                Select
+                            </button>
+                        </td>
+                    </tr>
 
-    </tbody>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>14:00 - 15:00</td>
+                        <td>Room 214</td>
+                        <td>
+                            <button
+                                type="button"
+                                data-day="Wednesday"
+                                aria-label="Select Wednesday">
+                                Select
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-</table>
-    <figure>
-        <span>🛑</span>
-        <figcaption>Office hours are held in room 301</figcaption>
-    </figure>
+            <figure>
+                <span aria-hidden="true">🛑</span>
+                <figcaption>
+                    Office hours are held in room 301
+                </figcaption>
+            </figure>
 
-    <p id="status" role="status" class="span-all"></p>
-    
-    </section>
-    
+            <p id="status" role="status" class="span-all"></p>
 
-    <section id="feedback">
-    <h2>Send Feedback</h2>
+        </section>
 
-    <form>
+        <section id="feedback">
+            <h2>Send Feedback</h2>
 
-        <p>
-            <label for="name">Name</label>
-            <input type="text" id="name">
-        </p>
+            <form novalidate>
 
-        <p>
-            <label for="email">Email</label>
-            <input type="email" id="email">
-        </p>
+                <p>
+                    <label for="name">Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required>
+                </p>
 
-        <fieldset class="span-all">
-            <legend>Topic</legend>
+                <p>
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required>
+                </p>
 
-            <label>
-                <input type="radio" name="topic">
-                Lab
-            </label>
+                <fieldset class="span-all">
+                    <legend>Topic</legend>
 
-            <label>
-                <input type="radio" name="topic">
-                Lecture
-            </label>
-        </fieldset>
+                    <label>
+                        <input
+                            type="radio"
+                            name="topic"
+                            value="lab">
+                        Lab
+                    </label>
 
-        <p class="span-all">
-            <label for="message">Message</label>
-            <textarea id="message" rows="5"></textarea>
-        </p>
+                    <label>
+                        <input
+                            type="radio"
+                            name="topic"
+                            value="lecture">
+                        Lecture
+                    </label>
+                </fieldset>
 
-        <button type="submit">Send</button>
+                <p class="span-all">
+                    <label for="message">Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="5"></textarea>
+                </p>
 
-    </form>
-</section>
+                <button type="submit">Send</button>
 
-<script type="module" src="main.js"></script>
+            </form>
+        </section>
+
+    </main>
+
+    <script type="module" src="main.js"></script>
+    <script type="module" src="feedback.js"></script>
 
 </body>
 </html>

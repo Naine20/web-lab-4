@@ -1,35 +1,27 @@
-import { delay, makeCounter } from "./utils.js";
-
-const status = document.querySelector("#status");
-const tbody = document.querySelector("#schedule tbody");
-
+import { delay, makeCounter, getRequired, describeSlot } from "./utils.js";
+const slots = [
+    { day: "Monday", start: "10:00", end: "11:00", room: "Room 214" },
+    { day: "Wednesday", start: "14:00", end: "15:00", room: "Room 214" },
+];
+const status = getRequired("#status");
+const tbody = getRequired("#schedule tbody");
 const nextBooking = makeCounter();
-
 tbody.addEventListener("click", async (event) => {
-
-    const button = event.target.closest("button[data-day]");
-
-    if (!button) {
+    const target = event.target;
+    if (!(target instanceof Element))
         return;
-    }
-
-    const day = button.dataset.day;
-    const row = button.closest("tr");
-
-    console.log(day);
-
-    status.textContent = `Updating ${day}...`;
-
+    const button = target.closest("button[data-day]");
+    const row = target.closest("tr");
+    if (button === null || row === null)
+        return;
+    const slot = slots.find((s) => s.day === button.dataset.day);
+    if (slot === undefined)
+        return;
+    status.textContent = `Updating ${slot.day}…`;
     await delay(1000);
-
     const booked = row.classList.toggle("selected");
-
-    if (booked) {
-        status.textContent =
-            `Booking #${nextBooking()} confirmed for ${day}.`;
-    } else {
-        status.textContent =
-            `${day} booking removed.`;
-    }
-
+    const count = document.querySelectorAll("#schedule tr.selected").length;
+    status.textContent = booked
+        ? `Booking #${nextBooking()} confirmed: ${describeSlot(slot)}. ${count} of ${slots.length} slots booked.`
+        : `Booking for ${slot.day} cancelled. ${count} of ${slots.length} slots booked.`;
 });
